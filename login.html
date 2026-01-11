@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - LPK Jepang</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+        padding: 20px;
+      }
+
+      .login-container {
+        width: 100%;
+        max-width: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .login-container::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: rotate(45deg);
+        animation: shine 6s infinite;
+        z-index: -1;
+      }
+
+      @keyframes shine {
+        0% {
+          left: -100%;
+        }
+        20% {
+          left: 100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .logo {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .logo h1 {
+        color: #fff;
+        font-size: 28px;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+      }
+
+      .logo p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+
+      .input-group {
+        position: relative;
+        margin-bottom: 25px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        outline: none;
+        color: #fff;
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+
+      .input-group input:focus {
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+      }
+
+      .input-group i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 18px;
+      }
+
+      .input-group input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        font-size: 14px;
+      }
+
+      .remember-forgot label {
+        color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .remember-forgot input {
+        margin-right: 5px;
+        accent-color: #00d9ff;
+      }
+
+      .remember-forgot a {
+        color: #00d9ff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .remember-forgot a:hover {
+        color: #00b8d9;
+        text-decoration: underline;
+      }
+
+      .btn-login {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #00d9ff, #00a3ff);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 5px 15px rgba(0, 217, 255, 0.4);
+      }
+
+      .btn-login:hover {
+        background: linear-gradient(45deg, #00b8d9, #008fd9);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 217, 255, 0.6);
+      }
+
+      .register-link {
+        text-align: center;
+        margin-top: 25px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+
+      .register-link a {
+        color: #00d9ff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      .register-link a:hover {
+        color: #00b8d9;
+        text-decoration: underline;
+      }
+
+      .language-selector {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .language-selector select {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        color: #fff;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .language-selector option {
+        background: #1a1a2e;
+      }
+
+      @media (max-width: 480px) {
+        .login-container {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo">
+        <h1>LPK JEPANG</h1>
+        <p>Pelatihan dan Pengembangan Sumber Daya Manusia</p>
+      </div>
+
+      <form action="login.php" method="POST">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" name="username" placeholder="Username" required />
+        </div>
+
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+
+        <div class="remember-forgot">
+          <label> <input type="checkbox" name="remember" /> Ingat saya </label>
+          <a href="#">Lupa password?</a>
+        </div>
+
+        <button type="submit" class="btn-login" name="login">LOGIN</button>
+
+        <div class="register-link">
+          Tidak punya akun? <a href="#">Daftar Sekarang</a>
+        </div>
+      </form>
+
+      <div class="language-selector">
+        <select>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="jp">日本語</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+
+    <script>
+      // Animasi untuk efek shine pada container
+      document
+        .querySelector(".login-container")
+        .addEventListener("mouseover", function () {
+          this.style.boxShadow = "0 20px 45px rgba(0, 0, 0, 0.3)";
+        });
+
+      document
+        .querySelector(".login-container")
+        .addEventListener("mouseout", function () {
+          this.style.boxShadow = "0 15px 35px rgba(0, 0, 0, 0.2)";
+        });
+
+      // Efek hover untuk input fields
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => {
+        input.addEventListener("focus", () => {
+          input.parentElement.querySelector("i").style.color = "#00d9ff";
+        });
+
+        input.addEventListener("blur", () => {
+          input.parentElement.querySelector("i").style.color =
+            "rgba(255, 255, 255, 0.7)";
+        });
+      });
+    </script>
+  </body>
+</html>
